@@ -47,6 +47,11 @@ public abstract class Product {
 
     public abstract String category();
 
+    public String toFileString() {
+        return articleNumber + ";" + title + ";" + price + ";" + description;
+    }
+
+
     @Override
     public String toString() {
         return "Produktkategori: " + category() +

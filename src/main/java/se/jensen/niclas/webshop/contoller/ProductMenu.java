@@ -1,18 +1,26 @@
-package se.jensen.niclas.webshop.models;
+package se.jensen.niclas.webshop.contoller;
 
 import se.jensen.niclas.webshop.Product;
+import se.jensen.niclas.webshop.dao.ProductDAO;
+import se.jensen.niclas.webshop.models.Accessories;
+import se.jensen.niclas.webshop.models.Clothing;
+import se.jensen.niclas.webshop.models.Shoes;
+import se.jensen.niclas.webshop.models.UI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductMenu {
     private List<Product> products = new ArrayList<>();
-    private UI ui;
+    private final UI ui;
+    private ProductDAO dao;
 //    private Scanner scanner = new Scanner(System.in);
 
 
-    public ProductMenu(UI ui) {
+    public ProductMenu(UI ui, ProductDAO dao) {
         this.ui = ui;
+        this.dao = dao;
 
     }
 
@@ -21,7 +29,7 @@ public class ProductMenu {
 
     }
 
-    public void showMenu() {
+    public void showMenu() throws IOException {
         boolean running = true;
         while (running) {
 
@@ -32,6 +40,8 @@ public class ProductMenu {
                 case 1:
                     Product p = askForProduct();
                     products.add(p);
+                    dao.saveProducts(products);
+
                     ui.info("Produkten har lagts till");
                     break;
                 case 2:

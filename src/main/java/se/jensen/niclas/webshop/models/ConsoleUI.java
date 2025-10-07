@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class ConsoleUI implements UI {
     private Scanner scanner;
 
-    public ConsoleUI() {
-        this.scanner = new Scanner(System.in);
+    public ConsoleUI(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     @Override
@@ -33,4 +33,6 @@ public class ConsoleUI implements UI {
 
         return Integer.parseInt(scanner.nextLine());
     }
+
+
 }
