@@ -48,7 +48,8 @@ public abstract class Product {
     public abstract String category();
 
     public String toFileString() {
-        return articleNumber + ";" + title + ";" + price + ";" + description;
+        return category() + ";" + articleNumber + ";" + title + ";" + price + ";" + description;
+
     }
 
 

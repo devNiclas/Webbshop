@@ -23,13 +23,16 @@ public class ConsoleUI implements UI {
 
     @Override
     public int menu() {
-        System.out.println("Välkommen till min webshop");
-        System.out.println("Välj ett alternativ");
-        System.out.println("**************************************************");
-        System.out.println("1. Lägg till en produkt i webbshopen");
-        System.out.println("2. Lista alla produkter ");
-        System.out.println("3. Sök efter en produkt");
-        System.out.println("4. Avsluta");
+        System.out.println("╔══════════════════════════════════╗");
+        System.out.println("║    Välkommen till min Webshop    ║");
+        System.out.println("╠══════════════════════════════════╣");
+        System.out.println("║       Välj ett alternativ        ║");
+        System.out.println("║                                  ║");
+        System.out.println("║ 1. ➕  Lägg till en produkt     ");
+        System.out.println("║ 2. ⭐ Lista alla produkter           ");
+        System.out.println("║ 3. \uD83D\uDD0D Sök efter en produkt           ");
+        System.out.println("║ 4. ❌ Avsluta                        ");
+        System.out.println("╚══════════════════════════════════╝");
 
         return Integer.parseInt(scanner.nextLine());
     }

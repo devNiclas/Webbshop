@@ -18,7 +18,8 @@ public class ProductMenu {
 //    private Scanner scanner = new Scanner(System.in);
 
 
-    public ProductMenu(UI ui, ProductDAO dao) {
+    public ProductMenu(List<Product> products, UI ui, ProductDAO dao) {
+        this.products = products;
         this.ui = ui;
         this.dao = dao;
 
@@ -29,7 +30,7 @@ public class ProductMenu {
 
     }
 
-    public void showMenu() throws IOException {
+    public void showMenu() {
         boolean running = true;
         while (running) {
 
@@ -40,7 +41,11 @@ public class ProductMenu {
                 case 1:
                     Product p = askForProduct();
                     products.add(p);
-                    dao.saveProducts(products);
+                    try {
+                        dao.saveProducts(products);
+                    } catch (IOException e) {
+                        ui.info("Kunde inte spara produkten till filen");
+                    }
 
                     ui.info("Produkten har lagts till");
                     break;
@@ -92,8 +97,10 @@ public class ProductMenu {
     public Product askForProduct() {
 
         ui.info("Vilken typ av produkt vill du lägga till?");
-        ui.info("1.  Kläder \n 2.  Skor \n 3.  Accessoarer");
-        int option = Integer.parseInt(ui.prompt("Välj ett alternativ"));
+        ui.info("1.👕 Kläder | 2. 👟 Skor | 3. 🧢 Accessoarer");
+
+        int option = Integer.parseInt(ui.prompt("\n⬆\uFE0F Välj ett alternativ"));
+
 
         ui.info("Vänligen skriv in:");
         String articleNumber = ui.prompt("Artikelnummer:");

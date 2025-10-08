@@ -15,7 +15,7 @@ public class ProductDAO {
     private Path file = Path.of("data/products.txt");
     private List<Product> products = new ArrayList<>();
 
-    
+
     private void checkIfDirectoryExists() throws IOException {
         Path parent = file.getParent();
         if (parent != null && Files.notExists(parent)) {
@@ -35,12 +35,16 @@ public class ProductDAO {
 
     }
 
-    public List<Product> loadProducts() throws IOException {
+    public List<Product> loadProducts() {
         List<Product> products = new ArrayList<>();
         if (Files.exists(file)) {
-            List<String> lines = Files.readAllLines(file);
-            for (String line : lines) {
-                products.add(ProductDAO.fromFileString(line));
+            try {
+                List<String> lines = Files.readAllLines(file);
+                for (String line : lines) {
+                    products.add(ProductDAO.fromFileString(line));
+                }
+            } catch (IOException e) {
+                System.out.println("Fel vid inläsning av produkter");
             }
         }
         return products;
@@ -49,21 +53,17 @@ public class ProductDAO {
 
     public static Product fromFileString(String line) {
         String[] parts = line.split(";", 5);
-        String type = parts[0];
+        String type = parts[0]; // Kategori
         String articleNumber = parts[1];
         String title = parts[2];
         double price = Double.parseDouble(parts[3]);
         String description = parts[4];
 
-        switch (type) {
-            case "Clothing":
-                return new Clothing(articleNumber, title, price, description);
-            case "Shoes":
-                return new Shoes(articleNumber, title, price, description);
-            case "Accessories":
-                return new Accessories(articleNumber, title, price, description);
-            default:
-                throw new IllegalArgumentException("Okänd produktkategori " + type);
-        }
+        return switch (type) {
+            case "Kläder" -> new Clothing(articleNumber, title, price, description);
+            case "Skor" -> new Shoes(articleNumber, title, price, description);
+            case "Accessoarer" -> new Accessories(articleNumber, title, price, description);
+            default -> throw new IllegalArgumentException("Okänd produktkategori " + type);
+        };
     }
 }
