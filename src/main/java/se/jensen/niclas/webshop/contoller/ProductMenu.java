@@ -39,15 +39,16 @@ public class ProductMenu {
 
             switch (choice) {
                 case 1:
-                    Product p = askForProduct();
-                    products.add(p);
                     try {
+                        Product p = askForProduct();
+                        products.add(p);
                         dao.saveProducts(products);
+                        ui.info("Produkten har lagts till och sparats");
+                    } catch (IllegalArgumentException e) {
+                        ui.info(e.getMessage());
                     } catch (IOException e) {
                         ui.info("Kunde inte spara produkten till filen");
                     }
-
-                    ui.info("Produkten har lagts till");
                     break;
                 case 2:
                     listProducts();
@@ -58,6 +59,8 @@ public class ProductMenu {
                 case 4:
                     ui.info("Du avslutade applikationen");
                     running = false;
+                default:
+                    ui.info("Ogitlgit menyval, försök igen!");
 
 
             }
@@ -95,26 +98,21 @@ public class ProductMenu {
 
 
     public Product askForProduct() {
-
-        ui.info("Vilken typ av produkt vill du lägga till?");
-        ui.info("1.👕 Kläder | 2. 👟 Skor | 3. 🧢 Accessoarer");
-
-        int option = Integer.parseInt(ui.prompt("\n⬆\uFE0F Välj ett alternativ"));
-
-
+        int option = ui.productOptions();
         ui.info("Vänligen skriv in:");
         String articleNumber = ui.prompt("Artikelnummer:");
         String title = ui.prompt("Titel:");
         double price = Double.parseDouble(ui.prompt("Pris:"));
         String description = ui.prompt("Beskrivning:");
 
+        return switch (option) {
+            case 1 -> new Clothing(articleNumber, title, price, description);
+            case 2 -> new Shoes(articleNumber, title, price, description);
+            case 3 -> new Accessories(articleNumber, title, price, description);
+            default -> throw new IllegalArgumentException("Ogiltigt produktval " + option);
+        };
 
-        if (option == 1) return new Clothing(articleNumber, title, price, description);
-        if (option == 2) return new Shoes(articleNumber, title, price, description);
-        if (option == 3) return new Accessories(articleNumber, title, price, description);
 
-
-        return null;
     }
 
 

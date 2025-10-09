@@ -59,7 +59,7 @@ public class ProductDAO {
         double price = Double.parseDouble(parts[3]);
         String description = parts[4];
 
-        return switch (type) {
+        return switch (type.trim()) {
             case "Kläder" -> new Clothing(articleNumber, title, price, description);
             case "Skor" -> new Shoes(articleNumber, title, price, description);
             case "Accessoarer" -> new Accessories(articleNumber, title, price, description);

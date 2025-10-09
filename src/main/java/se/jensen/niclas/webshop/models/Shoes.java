@@ -10,7 +10,7 @@ public class Shoes extends Product {
 
     @Override
     public String category() {
-        return "Skor:";
+        return "Skor";
 
     }
 }

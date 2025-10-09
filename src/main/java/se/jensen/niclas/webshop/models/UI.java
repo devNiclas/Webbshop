@@ -6,4 +6,7 @@ public interface UI {
     public void info(String message);
 
     public int menu();
+
+    public int productOptions();
+
 }

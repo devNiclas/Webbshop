@@ -9,6 +9,6 @@ public class Accessories extends Product {
 
     @Override
     public String category() {
-        return "Accessoarer:";
+        return "Accessoarer";
     }
 }
