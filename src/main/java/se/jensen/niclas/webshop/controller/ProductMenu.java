@@ -1,11 +1,11 @@
-package se.jensen.niclas.webshop.contoller;
+package se.jensen.niclas.webshop.controller;
 
 import se.jensen.niclas.webshop.Product;
 import se.jensen.niclas.webshop.dao.ProductDAO;
 import se.jensen.niclas.webshop.models.Accessories;
 import se.jensen.niclas.webshop.models.Clothing;
 import se.jensen.niclas.webshop.models.Shoes;
-import se.jensen.niclas.webshop.models.UI;
+import se.jensen.niclas.webshop.view.UI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,6 @@ public class ProductMenu {
     private List<Product> products = new ArrayList<>();
     private final UI ui;
     private ProductDAO dao;
-//    private Scanner scanner = new Scanner(System.in);
 
 
     public ProductMenu(List<Product> products, UI ui, ProductDAO dao) {
@@ -59,10 +58,7 @@ public class ProductMenu {
                 case 4:
                     ui.info("Du avslutade applikationen");
                     running = false;
-                default:
-                    ui.info("Ogitlgit menyval, försök igen!");
-
-
+                    break;
             }
         }
     }
@@ -85,13 +81,15 @@ public class ProductMenu {
 
         for (Product product : products) {
             if (product.getArticleNumber().equals(searchArticle)) {
-                ui.info("Produkt hittad" + product);
+                ui.info("⭐ Produkt hittad ->" + " " + product);
                 found = true;
+                ui.prompt("Tryck enter för att komma tillbaka till huvudmenyn");
                 break;
             }
         }
         if (!found) {
             ui.info("Inga produkter med det artikelnumret finns i webbshopen");
+            ui.prompt("Tryck enter för att komma tillbaka till huvudmenyn");
         }
 
     }

@@ -1,4 +1,4 @@
-package se.jensen.niclas.webshop.models;
+package se.jensen.niclas.webshop.view;
 
 import java.util.Scanner;
 
@@ -29,10 +29,11 @@ public class ConsoleUI implements UI {
             System.out.println("╠══════════════════════════════════╣");
             System.out.println("║       Välj ett alternativ        ║");
             System.out.println("║                                  ║");
-            System.out.println("║ 1. ➕  Lägg till en produkt     ");
-            System.out.println("║ 2. ⭐ Lista alla produkter           ");
-            System.out.println("║ 3. \uD83D\uDD0D Sök efter en produkt           ");
-            System.out.println("║ 4. ❌ Avsluta                        ");
+            System.out.println("╠══════════════════════════════════╣");
+            System.out.println(" 1. ➕  Lägg till en produkt     ");
+            System.out.println(" 2. ⭐ Lista alla produkter           ");
+            System.out.println(" 3. \uD83D\uDD0D Sök efter en produkt           ");
+            System.out.println(" 4. ❌ Avsluta                        ");
             System.out.println("╚══════════════════════════════════╝");
 
             String input = scanner.nextLine().trim();

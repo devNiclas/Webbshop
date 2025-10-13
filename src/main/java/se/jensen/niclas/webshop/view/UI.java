@@ -1,4 +1,4 @@
-package se.jensen.niclas.webshop.models;
+package se.jensen.niclas.webshop.view;
 
 public interface UI {
     public String prompt(String message);

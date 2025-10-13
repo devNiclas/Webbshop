@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
+    // Atribut
     private Path file = Path.of("data/products.txt");
-    private List<Product> products = new ArrayList<>();
 
 
     private void checkIfDirectoryExists() throws IOException {
@@ -32,10 +32,12 @@ public class ProductDAO {
             lines.add(product.toFileString());
         }
         Files.write(file, lines);
+        // Sparar produkter, skriver över existernade innehåll
 
     }
 
     public List<Product> loadProducts() {
+        // Lagra objekt från Product
         List<Product> products = new ArrayList<>();
         if (Files.exists(file)) {
             try {
@@ -49,6 +51,7 @@ public class ProductDAO {
         }
         return products;
     }
+    // Läser produkter från fil, skapar objekt
 
 
     public static Product fromFileString(String line) {
@@ -67,3 +70,5 @@ public class ProductDAO {
         };
     }
 }
+// Konverterar en rad från fil till produkt
+// Om kategori inte finns kasta exception

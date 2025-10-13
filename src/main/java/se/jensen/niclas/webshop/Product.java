@@ -17,42 +17,31 @@ public abstract class Product {
         return articleNumber;
     }
 
-    public void setArticleNumber(String articleNumber) {
-        this.articleNumber = articleNumber;
-    }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public abstract String category();
 
+    // Returnerar hur objektet skrivs till text i fil
     public String toFileString() {
         return category() + ";" + articleNumber + ";" + title + ";" + price + ";" + description;
 
     }
 
-
+    
     @Override
     public String toString() {
         return "Produktkategori: " + category() +

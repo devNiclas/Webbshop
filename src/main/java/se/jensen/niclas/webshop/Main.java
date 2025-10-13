@@ -1,7 +1,9 @@
-package se.jensen.niclas.webshop.models;
+package se.jensen.niclas.webshop;
 
-import se.jensen.niclas.webshop.contoller.ProductMenu;
+import se.jensen.niclas.webshop.controller.ProductMenu;
 import se.jensen.niclas.webshop.dao.ProductDAO;
+import se.jensen.niclas.webshop.view.ConsoleUI;
+import se.jensen.niclas.webshop.view.UI;
 
 import java.util.Scanner;
 
