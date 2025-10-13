@@ -15,7 +15,7 @@ public class ProductDAO {
     // Atribut
     private Path file = Path.of("data/products.txt");
 
-
+    // Kolla om katalogen finns, annars skapa en
     private void checkIfDirectoryExists() throws IOException {
         Path parent = file.getParent();
         if (parent != null && Files.notExists(parent)) {
@@ -32,7 +32,7 @@ public class ProductDAO {
             lines.add(product.toFileString());
         }
         Files.write(file, lines);
-        // Sparar produkter, skriver över existernade innehåll
+        // Sparar produkter, skriver över existerande innehåll
 
     }
 

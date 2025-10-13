@@ -1,6 +1,7 @@
 package se.jensen.niclas.webshop;
 
 public abstract class Product {
+    // Grundattribut
     private String articleNumber;
     private String title;
     private double price;
@@ -41,7 +42,7 @@ public abstract class Product {
 
     }
 
-    
+
     @Override
     public String toString() {
         return "Produktkategori: " + category() +

@@ -9,10 +9,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        // Skapar objekt
         Scanner scanner = new Scanner(System.in);
         UI ui = new ConsoleUI(scanner);
         ProductDAO dao = new ProductDAO();
 
+        // Skapar menyn med produkter
         ProductMenu productmenu = new ProductMenu(dao.loadProducts(), ui, dao);
 
 

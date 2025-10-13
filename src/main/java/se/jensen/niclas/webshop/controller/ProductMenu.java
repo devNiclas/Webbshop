@@ -24,11 +24,7 @@ public class ProductMenu {
 
     }
 
-    public void addProduct(Product p) {
-        products.add(p);
-
-    }
-
+    // Användarens menyval
     public void showMenu() {
         boolean running = true;
         while (running) {
@@ -63,6 +59,11 @@ public class ProductMenu {
         }
     }
 
+    public void addProduct(Product p) {
+        products.add(p);
+
+    }
+
     public void listProducts() {
         if (products.isEmpty()) {
             ui.info("Finns inga produkter i webbshopen");
@@ -74,6 +75,7 @@ public class ProductMenu {
         ui.info("**************************************************");
         ui.prompt("Tryck enter för att komma tillbaka till menyn");
     }
+
 
     public void searchProduct() {
         String searchArticle = ui.prompt("Mata in artikelnummer");
